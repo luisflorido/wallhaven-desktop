@@ -36,7 +36,7 @@ const Settings: React.FC = () => {
   }, []);
 
   const saveSettings = () => {
-    if (apiToken && minutesToRefresh && downloadsPath) {
+    if (minutesToRefresh && downloadsPath) {
       dispatch(
         updateSetting({
           apiToken,
