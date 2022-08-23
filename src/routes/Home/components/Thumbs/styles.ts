@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 export const ThumbContainer = styled.div`
-  background-color: var(--background);
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-auto-rows: 250px;
   grid-gap: 15px;
-  overflow-y: scroll;
-  height: 100vh;
   padding: 20px;
 `;
 

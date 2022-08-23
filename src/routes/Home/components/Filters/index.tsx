@@ -26,7 +26,7 @@ export interface IFilterName {
 }
 
 const sortOptions: SelectOption[] = [
-  { label: 'Date Added', value: 'date' },
+  { label: 'Date Added', value: 'date_added' },
   { label: 'Relevance', value: 'relevance' },
   { label: 'Random', value: 'random' },
   { label: 'Views', value: 'views' },

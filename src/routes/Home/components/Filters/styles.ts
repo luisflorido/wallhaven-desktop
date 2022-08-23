@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   border-right: 1px solid var(--border);
   background-color: var(--background-secondary);
-  height: calc(100% - var(--menu-height) + 5px);
+  height: 100%;
   justify-content: space-between;
 `;
 

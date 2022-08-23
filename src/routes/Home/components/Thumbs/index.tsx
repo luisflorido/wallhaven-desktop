@@ -1,12 +1,7 @@
 import Skeleton from '@/components/atoms/Skeleton';
 import ThumbImage from '@/components/molecules/ThumbImage';
 import { arrayKeys } from '@/helpers';
-import {
-  useIntersectionObserver,
-  useAppDispatch,
-  useAppSelector,
-} from '@/hooks';
-import { getSearch } from '@/store/ducks/wallpaper';
+import { useAppSelector } from '@/hooks';
 import React, { useEffect, useRef } from 'react';
 import { ItemContainer, ThumbContainer } from './styles';
 
@@ -15,10 +10,7 @@ interface Props {
 }
 
 const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
-  const { search, searchMeta, loadingSearch } = useAppSelector(
-    state => state.wallpaper,
-  );
-  const dispatch = useAppDispatch();
+  const { search, searchMeta } = useAppSelector(state => state.wallpaper);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleThumbClick = (id: string) => {
@@ -30,29 +22,6 @@ const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
       scrollRef.current.scrollTo(0, 0);
     }
   }, [searchMeta]);
-
-  const onEndReached = () => {
-    if (
-      search?.length &&
-      !loadingSearch &&
-      searchMeta &&
-      searchMeta?.current_page < searchMeta?.last_page
-    ) {
-      dispatch(
-        getSearch({
-          params: { page: searchMeta.current_page + 1 },
-          options: {
-            addToFinal: true,
-          },
-        }),
-      );
-    }
-  };
-
-  const innerRef = useRef(null);
-  useIntersectionObserver(innerRef, onEndReached, {
-    threshold: 0.2,
-  });
 
   return (
     <ThumbContainer ref={scrollRef}>
@@ -69,11 +38,6 @@ const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
               onThumbClick={() => handleThumbClick(thumb.id)}
             />
           ))}
-      {arrayKeys(3).map(index => (
-        <ItemContainer ref={innerRef} key={index}>
-          <Skeleton height="100%" width="100%" />
-        </ItemContainer>
-      ))}
     </ThumbContainer>
   );
 };

@@ -22,6 +22,7 @@ const Modal: React.FC<Props & ReactModal.Props> = ({
       isOpen={isOpen}
       shouldCloseOnEsc
       shouldCloseOnOverlayClick
+      onRequestClose={handleClose}
       {...rest}
       style={{
         overlay: {
