@@ -12,23 +12,27 @@ import { store, persistor } from './store';
 import 'react-toastify/dist/ReactToastify.css';
 import GlobalStyles from './styles/GlobalStyles';
 import TabBar from './components/atoms/TabBar';
+import { AppContainer } from './styles';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 
-const App: React.FC = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <GlobalStyles />
-      <HashRouter>
-        <TabBar>
-          <Routes />
-        </TabBar>
-      </HashRouter>
-      <ToastContainer />
-    </PersistGate>
-  </Provider>
-);
+const App: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <GlobalStyles />
+        <HashRouter>
+          <AppContainer>
+            <TabBar />
+            <Routes />
+          </AppContainer>
+        </HashRouter>
+        <ToastContainer />
+      </PersistGate>
+    </Provider>
+  );
+};
 
 export default App;

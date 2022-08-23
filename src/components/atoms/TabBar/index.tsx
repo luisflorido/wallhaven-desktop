@@ -3,7 +3,7 @@ import { AiOutlineClose, AiOutlineLine } from 'react-icons/ai';
 
 import { Container, Bar } from './styles';
 
-const TabBar: React.FC = ({ children }) => {
+const TabBar: React.FC = () => {
   const handleClose = () => {
     window.Main.close();
   };
@@ -34,7 +34,6 @@ const TabBar: React.FC = ({ children }) => {
           />
         </div>
       </Bar>
-      {children}
     </Container>
   );
 };

@@ -16,6 +16,8 @@ const assetsPath =
     ? process.resourcesPath
     : app.getAppPath();
 
+const transparent = process.platform !== 'darwin';
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     icon: path.join(assetsPath, 'assets', 'icon.png'),
@@ -28,9 +30,7 @@ function createWindow() {
       contextIsolation: true,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
-    autoHideMenuBar: true,
-    frame: false,
-    transparent: true,
+    transparent,
     roundedCorners: true,
   });
   if (process.env.NODE_ENV === 'development') {
