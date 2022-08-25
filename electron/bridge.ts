@@ -38,6 +38,8 @@ export const api = {
   minimize: () => {
     ipcRenderer.send('minimize');
   },
+
+  platform: process.platform,
 };
 
 contextBridge.exposeInMainWorld('Main', api);

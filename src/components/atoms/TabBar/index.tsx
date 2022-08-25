@@ -4,6 +4,7 @@ import { AiOutlineClose, AiOutlineLine } from 'react-icons/ai';
 import { Container, Bar } from './styles';
 
 const TabBar: React.FC = () => {
+  const isDarwin = window.Main.platform === 'darwin';
   const handleClose = () => {
     window.Main.close();
   };
@@ -19,20 +20,24 @@ const TabBar: React.FC = () => {
         <div>
           <span>WALLHAVEN</span>
         </div>
-        <div className="flex no-drag">
-          <AiOutlineLine
-            className="icon"
-            onClick={handleMinimize}
-            color="var(--border)"
-            size={20}
-          />
-          <AiOutlineClose
-            className="icon close"
-            onClick={handleClose}
-            color="var(--border)"
-            size={20}
-          />
-        </div>
+        {!isDarwin ? (
+          <div className="flex no-drag">
+            <AiOutlineLine
+              className="icon"
+              onClick={handleMinimize}
+              color="var(--border)"
+              size={20}
+            />
+            <AiOutlineClose
+              className="icon close"
+              onClick={handleClose}
+              color="var(--border)"
+              size={20}
+            />
+          </div>
+        ) : (
+          <div className="flex" />
+        )}
       </Bar>
     </Container>
   );

@@ -16,7 +16,7 @@ const assetsPath =
     ? process.resourcesPath
     : app.getAppPath();
 
-const transparent = process.platform !== 'darwin';
+const isDarwin = process.platform === 'darwin';
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -30,7 +30,7 @@ function createWindow() {
       contextIsolation: true,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
-    transparent,
+    titleBarStyle: 'hidden',
     roundedCorners: true,
   });
   if (process.env.NODE_ENV === 'development') {
@@ -147,7 +147,7 @@ app
   .catch(e => console.error(e));
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+  if (isDarwin) {
     app.quit();
   }
 });

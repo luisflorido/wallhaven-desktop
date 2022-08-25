@@ -6,5 +6,4 @@ export const InputContainer = styled.input`
   border-radius: 4px;
   margin: 5px 10px;
   color: var(--text);
-  width: 100%;
 `;

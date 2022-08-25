@@ -223,7 +223,7 @@ const Filters: React.FC = () => {
             onChange={value =>
               toggleFilter({ filterType: 'q', type: value.target.value })
             }
-            placeholder="Search filter"
+            placeholder="Search by @username, tags, id, type or like"
             defaultValue={params?.q || ''}
           />
         </FilterContainer>
