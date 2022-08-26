@@ -6,6 +6,7 @@ import Thumbs from './Thumbs';
 
 const Bookmarks: React.FC = () => {
   const [openThumb, setOpenThumb] = useState<string | null>(null);
+
   const handleModalClose = () => {
     setOpenThumb(null);
   };
@@ -17,7 +18,7 @@ const Bookmarks: React.FC = () => {
   return (
     <Container>
       <Header title="Bookmarks" />
-      <Thumbs onThumbClick={handleThumbClick} />
+      <Thumbs isBookmark onThumbClick={handleThumbClick} />
       <ModalImage thumbId={openThumb} onModalClose={handleModalClose} />
     </Container>
   );

@@ -5,9 +5,10 @@ import { Container, Content, ThumbContainer } from './styles';
 
 interface Props {
   onThumbClick: (id: string) => void;
+  isBookmark?: boolean;
 }
 
-const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
+const Thumbs: React.FC<Props> = ({ onThumbClick, isBookmark = false }) => {
   const { bookmarks } = useAppSelector(state => state.bookmark);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -22,6 +23,7 @@ const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
           <ThumbContainer ref={scrollRef}>
             {bookmarks.map(thumb => (
               <ThumbImage
+                isBookmark={isBookmark}
                 key={thumb.id}
                 thumb={thumb}
                 onThumbClick={() => handleThumbClick(thumb.id)}

@@ -1,4 +1,6 @@
 import { showToast } from '@/helpers';
+import { useAppDispatch } from '@/hooks';
+import { checkDownloadedBookmarks } from '@/store/ducks/bookmark';
 import React, { useEffect } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import Bookmarks from './Bookmarks';
@@ -8,6 +10,7 @@ import Settings from './Settings';
 const Routes: React.FC = () => {
   const history = useHistory();
   const timeoutRef = React.useRef<NodeJS.Timeout>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     window.Main.on('toast-error', (errorMessage: string) =>
@@ -25,6 +28,7 @@ const Routes: React.FC = () => {
         history.push('/settings');
       }, 500);
     }
+    dispatch(checkDownloadedBookmarks());
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);

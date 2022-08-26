@@ -40,6 +40,10 @@ export const api = {
   },
 
   platform: process.platform,
+
+  checkDownloadedBookmarks: (downloadsPath: string) => {
+    ipcRenderer.send('check-downloaded-bookmarks', downloadsPath);
+  },
 };
 
 contextBridge.exposeInMainWorld('Main', api);

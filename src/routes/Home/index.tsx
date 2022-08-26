@@ -25,6 +25,8 @@ const Home: React.FC = () => {
   const { settings } = useAppSelector(state => state.setting);
   const [openThumb, setOpenThumb] = useState<string | null>(null);
   const history = useHistory();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (searchError?.status === 401) {
       showToast({
@@ -77,13 +79,20 @@ const Home: React.FC = () => {
     threshold: 0.2,
   });
 
+  const scrollToTop = () => {
+    setTimeout(() => {
+      console.tron.log('scrollToTop');
+      scrollRef.current?.scrollTo(0, 0);
+    }, 3000);
+  };
+
   return (
     <Container>
       <Flex flex={2}>
-        <Filters />
+        <Filters scrollToTop={scrollToTop} />
       </Flex>
       <Flex flex={8} className="thumbs-container">
-        <Thumbs onThumbClick={handleThumbClick} />
+        <Thumbs ref={scrollRef} onThumbClick={handleThumbClick} />
         {(hasNextPage || loadingSearch) && (
           <Flex flex={1} className="skeleton">
             <Skeleton height={50} width={50} borderRadius={50} />

@@ -1,17 +1,19 @@
 import { useAppDispatch, useAppSelector, useProgressiveImg } from '@/hooks';
 import { toggleBookmark } from '@/store/ducks/bookmark';
 import { ISearch } from '@/types';
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
+import { AiOutlineCheckCircle, AiOutlineClockCircle } from 'react-icons/ai';
 import { BsFillBookmarkFill, BsFillStarFill } from 'react-icons/bs';
 import { Containter, Icons, Image } from './styles';
 
 export interface Props {
   thumb: ISearch;
   onThumbClick: (id: string) => void;
+  isBookmark?: boolean;
 }
 
 const ThumbImage = forwardRef<HTMLDivElement, Props>(
-  ({ thumb, onThumbClick }, ref) => {
+  ({ thumb, onThumbClick, isBookmark = false }, ref) => {
     const [src, blur] = useProgressiveImg(
       thumb.thumbs.small,
       thumb.thumbs.large,
@@ -25,6 +27,18 @@ const ThumbImage = forwardRef<HTMLDivElement, Props>(
     const handleBookmarkClick = () => {
       dispatch(toggleBookmark(thumb));
     };
+
+    const renderDownloadIcon = useMemo(() => {
+      if (!isBookmark) {
+        return null;
+      }
+      const icon = thumb.downloaded ? (
+        <AiOutlineCheckCircle className="downloadIcon success" />
+      ) : (
+        <AiOutlineClockCircle className="downloadIcon" />
+      );
+      return icon;
+    }, [isBookmark, thumb.downloaded]);
 
     return (
       <Containter ref={ref}>
@@ -61,6 +75,7 @@ const ThumbImage = forwardRef<HTMLDivElement, Props>(
             transition: blur ? 'none' : 'filter 0.3s ease-out',
           }}
         />
+        {renderDownloadIcon}
       </Containter>
     );
   },

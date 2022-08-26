@@ -9,6 +9,19 @@ export const Containter = styled.div`
   &:hover :first-child {
     opacity: 1;
   }
+
+  .downloadIcon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    margin: 5px 10px;
+    color: var(--not-downloaded);
+    font-size: 1.2em;
+  }
+
+  .success {
+    color: var(--downloaded) !important;
+  }
 `;
 
 export const Image = styled.img<Pick<ISearch, 'purity'>>`

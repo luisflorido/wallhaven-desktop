@@ -35,7 +35,11 @@ const sortOptions: SelectOption[] = [
   { label: 'Hot', value: 'hot' },
 ];
 
-const Filters: React.FC = () => {
+interface Props {
+  scrollToTop: () => void;
+}
+
+const Filters: React.FC<Props> = ({ scrollToTop }) => {
   const history = useHistory();
   const dispatch = useAppDispatch();
   const { searchParams } = useAppSelector(state => state.wallpaper);
@@ -49,6 +53,7 @@ const Filters: React.FC = () => {
         params: searchParamsDebounce,
       }),
     );
+    scrollToTop();
   }, [searchParamsDebounce]);
 
   const toggleFilter = ({

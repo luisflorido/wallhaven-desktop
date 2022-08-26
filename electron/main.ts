@@ -98,42 +98,61 @@ async function registerListeners() {
       }
     },
   );
-  ipcMain.on('toggle-bookmark', (event, thumb, folderPath, alreadyExists) => {
-    const defaultError = 'Error bookmarking this wallpaper.';
-    try {
-      if (mainWindow) {
-        const fileId = thumb.id;
-        const fileType = thumb.file_type.split('/')[1];
-        const fileName = `${fileId}.${fileType}`;
-        const fullPath = `${folderPath}/${fileName}`;
-        const existFile = fs.existsSync(fullPath);
+  ipcMain.on(
+    'toggle-bookmark',
+    async (event, thumb, folderPath, alreadyExists) => {
+      const defaultError = 'Error bookmarking this wallpaper.';
+      try {
+        if (mainWindow) {
+          const fileId = thumb.id;
+          const fileType = thumb.file_type.split('/')[1];
+          const fileName = `${fileId}.${fileType}`;
+          const fullPath = `${folderPath}/${fileName}`;
+          const existFile = fs.existsSync(fullPath);
 
-        if (alreadyExists && existFile) {
-          try {
-            fs.unlinkSync(fullPath);
-          } catch {
-            // TODO: Try event again
-            sendSenderError(event, 'Error removing file from bookmark folder.');
+          if (alreadyExists && existFile) {
+            try {
+              fs.unlinkSync(fullPath);
+            } catch {
+              // TODO: Try event again
+              sendSenderError(
+                event,
+                'Error removing file from bookmark folder.',
+              );
+            }
+          } else if (!alreadyExists && !existFile) {
+            try {
+              await download(mainWindow, thumb.path, {
+                directory: folderPath,
+                filename: fileName,
+              });
+              event.sender.send('check-downloaded-bookmarks', [thumb.id]);
+            } catch {
+              // TODO: Try event again
+              sendSenderError(
+                event,
+                'Error downloading file to bookmark folder.',
+              );
+            }
           }
-        } else if (!alreadyExists && !existFile) {
-          try {
-            download(mainWindow, thumb.path, {
-              directory: folderPath,
-              filename: fileName,
-            });
-          } catch {
-            // TODO: Try event again
-            sendSenderError(
-              event,
-              'Error downloading file to bookmark folder.',
-            );
-          }
+        } else {
+          sendSenderError(event, defaultError);
         }
-      } else {
+      } catch {
         sendSenderError(event, defaultError);
       }
+    },
+  );
+  ipcMain.on('check-downloaded-bookmarks', (event, folderPath) => {
+    try {
+      const dirFiles = fs.readdirSync(folderPath, { withFileTypes: true });
+      const downloadedBookmarks = dirFiles
+        .filter(file => file.isFile())
+        .map(file => file.name.split('.')[0]);
+      event.sender.send('check-downloaded-bookmarks', downloadedBookmarks);
     } catch {
-      sendSenderError(event, defaultError);
+      event.sender.send('check-downloaded-bookmarks', []);
+      // TODO: Handle error
     }
   });
 }

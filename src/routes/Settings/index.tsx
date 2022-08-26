@@ -90,6 +90,7 @@ const Settings: React.FC = () => {
                 onChange={() => {}}
                 value={downloadsPath || ''}
                 style={{ marginRight: 10 }}
+                fullWidth
               />
             </div>
             <Button onClick={() => window.Main.openDialog()}>

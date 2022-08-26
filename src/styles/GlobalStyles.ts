@@ -67,6 +67,9 @@ export default createGlobalStyle`
         --administrator: #edcb43;
         --developer: #ed6743;
         --owner: #b336ed;
+
+        --downloaded: rgba(0,255,0,0.7);
+        --not-downloaded: rgba(255,255,255,0.7);
     }
 
     ::-webkit-scrollbar {

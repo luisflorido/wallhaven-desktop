@@ -39,7 +39,11 @@ export type ISearchParams = {
   params?: ISearchAPIParams;
 };
 
-export interface ISearch {
+interface ISearchComplements {
+  downloaded: boolean;
+}
+
+export interface ISearch extends ISearchComplements {
   id: string;
   url: string;
   short_url: string;
