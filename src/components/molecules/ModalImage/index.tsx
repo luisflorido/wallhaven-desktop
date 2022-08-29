@@ -57,7 +57,11 @@ const ModalImage: React.FC<Props> = ({ thumbId, onModalClose }) => {
   };
 
   return (
-    <Modal isOpen={thumbId !== null} handleClose={onModalClose} noPadding>
+    <Modal
+      ariaHideApp={false}
+      isOpen={thumbId !== null}
+      handleClose={onModalClose}
+      noPadding>
       <Container>{renderContent()}</Container>
     </Modal>
   );

@@ -80,10 +80,7 @@ const Home: React.FC = () => {
   });
 
   const scrollToTop = () => {
-    setTimeout(() => {
-      console.tron.log('scrollToTop');
-      scrollRef.current?.scrollTo(0, 0);
-    }, 3000);
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
