@@ -1,7 +1,7 @@
 {
   "name": "wallhaven",
   "author": "Luis Guilherme Silva Florido <luiisflorido@gmail.com>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wallhaven desktop application.",
   "repository": {
     "url": "https://github.com/luisflorido/wallhaven-desktop"
