@@ -29,3 +29,15 @@ export const Title = styled.span`
   font-weight: 700;
   font-size: 0.9em;
 `;
+
+export const Flex = styled.div`
+  flex: 1;
+`;
+
+export const TokenLinkBtn = styled.button.attrs({ type: 'button' })`
+  background: transparent;
+  color: white;
+  text-decoration: underline;
+  margin-left: 10px;
+  cursor: pointer;
+`;

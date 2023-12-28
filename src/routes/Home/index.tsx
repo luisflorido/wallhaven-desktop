@@ -38,6 +38,10 @@ const Home: React.FC = () => {
     }
   }, [searchError]);
 
+  const scrollToTop = () => {
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     if (
       !lastSearch ||
@@ -47,6 +51,7 @@ const Home: React.FC = () => {
     ) {
       dispatch(getSearch({}));
     }
+    scrollToTop();
   }, []);
 
   const handleModalClose = () => {
@@ -75,13 +80,10 @@ const Home: React.FC = () => {
   };
 
   const innerRef = useRef(null);
+
   useIntersectionObserver(innerRef, onEndReached, {
     threshold: 0.2,
   });
-
-  const scrollToTop = () => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <Container>
@@ -95,7 +97,7 @@ const Home: React.FC = () => {
             <Skeleton height={50} width={50} borderRadius={50} />
           </Flex>
         )}
-        <div ref={innerRef} />
+        <div ref={innerRef} style={{ height: 1 }} />
       </Flex>
       <ModalImage thumbId={openThumb} onModalClose={handleModalClose} />
     </Container>

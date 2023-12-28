@@ -7,7 +7,14 @@ import Header from '@/components/atoms/Header';
 import { ISetting } from '@/types/setting';
 import { showToast } from '@/helpers';
 import { useHistory } from 'react-router-dom';
-import { Configuration, Container, Content, Title } from './styles';
+import {
+  Configuration,
+  Container,
+  Content,
+  Flex,
+  Title,
+  TokenLinkBtn,
+} from './styles';
 
 const Settings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -62,7 +69,15 @@ const Settings: React.FC = () => {
       <Header title="Settings" />
       <Content>
         <Configuration>
-          <Title>API Token</Title>
+          <Flex>
+            <Title>API Token</Title>
+            <TokenLinkBtn
+              onClick={() =>
+                window.Main.openBrowser('https://wallhaven.cc/settings/account')
+              }>
+              Where can I get my API token?
+            </TokenLinkBtn>
+          </Flex>
           <Input
             name="api-token"
             onChange={event => updateField('apiToken', event.target.value)}

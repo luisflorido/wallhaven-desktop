@@ -1,10 +1,11 @@
 import { ISearch } from '@/types';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Containter = styled.div`
+export const Containter = styled(motion.div)`
   position: relative;
-
-  transition: transform 0.3s;
+  height: 100%;
+  break-inside: avoid;
 
   &:hover :first-child {
     opacity: 1;

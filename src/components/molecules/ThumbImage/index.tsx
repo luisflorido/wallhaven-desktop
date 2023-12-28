@@ -16,7 +16,7 @@ const ThumbImage = forwardRef<HTMLDivElement, Props>(
   ({ thumb, onThumbClick, isBookmark = false }, ref) => {
     const [src, blur] = useProgressiveImg(
       thumb.thumbs.small,
-      thumb.thumbs.large,
+      thumb.thumbs.original,
     );
     const bookmarks = useAppSelector(state => state.bookmark.bookmarks);
     const isBookmarked = bookmarks?.length
@@ -41,7 +41,14 @@ const ThumbImage = forwardRef<HTMLDivElement, Props>(
     }, [isBookmark, thumb.downloaded]);
 
     return (
-      <Containter ref={ref}>
+      <Containter
+        ref={ref}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}>
         <Icons>
           <div>
             <span>{thumb.favorites}</span>

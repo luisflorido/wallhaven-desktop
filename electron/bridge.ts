@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { ISearch } from '@/types';
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer, shell } from 'electron';
 
 export const api = {
   sendMessage: (message: string) => {
@@ -43,6 +43,10 @@ export const api = {
 
   checkDownloadedBookmarks: (downloadsPath: string) => {
     ipcRenderer.send('check-downloaded-bookmarks', downloadsPath);
+  },
+
+  openBrowser: (url: string) => {
+    shell.openExternal(url);
   },
 };
 

@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 export const ThumbContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 250px;
-  grid-gap: 15px;
-  padding: 20px;
+  width: 100%;
+  padding: 20px 15px;
+  columns: 3;
+  column-gap: 10px;
+
+  @media (max-width: 900px) {
+    columns: 2;
+  }
+
+  @media (max-width: 480px) {
+    columns: 1;
+  }
 `;
 
 export const ItemContainer = styled.div`
