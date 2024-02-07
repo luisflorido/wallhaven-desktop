@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   padding: 1% 4%;
-  background-color: var(--background-secondary);
+  background-color: var(--background);
   flex: 1;
 `;
 

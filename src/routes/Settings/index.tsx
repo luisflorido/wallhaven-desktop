@@ -108,7 +108,9 @@ const Settings: React.FC = () => {
                 fullWidth
               />
             </div>
-            <Button onClick={() => window.Main.openDialog()}>
+            <Button
+              style={{ padding: 0, marginLeft: 20 }}
+              onClick={() => window.Main.openDialog()}>
               Select folder
             </Button>
           </div>
