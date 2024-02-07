@@ -2,14 +2,14 @@
 
 **This project is not owned by wallhaven.cc, we just use their API.**
 
-![Screenshot_7](https://user-images.githubusercontent.com/7344056/185297333-7b095314-8a59-4aa6-b400-3ed40c875701.png)
+<img width="1205" alt="image" src="https://github.com/luisflorido/wallhaven-desktop/assets/7344056/5079558e-5f0e-4cbf-8019-3fb24dbcf012">
 
-![Screenshot_7](https://user-images.githubusercontent.com/7344056/185299023-ada4478d-c695-486b-99db-a91b71843903.png)
 
 # How to use
 You can download the application in [this link](https://github.com/luisflorido/wallhaven-desktop/releases)
 In order to setup the only thing that you need to do is get your API Key [here](https://wallhaven.cc/settings/account) and set on Settings page inside the desktop application.
-![Screenshot_8](https://user-images.githubusercontent.com/7344056/185301431-837ed70d-7dc9-4b8a-9c23-bfd33d4b2145.png)
+<img width="1202" alt="image" src="https://github.com/luisflorido/wallhaven-desktop/assets/7344056/91908006-b99d-4c62-a32d-ec2d4682fba8">
+
 
 ## TODO
 - [ ] Download progress
