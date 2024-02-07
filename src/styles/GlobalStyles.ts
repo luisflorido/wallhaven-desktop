@@ -46,10 +46,10 @@ export default createGlobalStyle`
     }
 
     :root {
-        --menu-height: 30px;
+        --menu-height: 40px;
         --background: #1a191b;
         --background-secondary: #242526;
-        --background-terciary: #3A3B3C;
+        --background-terciary: #212121;
         --border: rgba(255,255,255,0.2);
 
         --text: #fff;

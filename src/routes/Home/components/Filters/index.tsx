@@ -15,8 +15,6 @@ import {
   FilterName,
   FilterTitle,
   ScreenName,
-  Separator,
-  Title,
   TopContainer,
 } from './styles';
 
@@ -96,12 +94,16 @@ const Filters: React.FC<Props> = ({ scrollToTop }) => {
 
   const checkFilterIndexIsActive = (
     objectName: keyof ISearchAPIParams,
-    filterIndex: number | string,
+    filterIndex: number | string | boolean,
   ) => {
     if (typeof filterIndex === 'number') {
       const actualFilter = params?.[objectName]?.toString() || '000';
       const filter = actualFilter[filterIndex - 1];
       return filter === '1';
+    }
+    if (typeof filterIndex === 'boolean') {
+      const actualFilter = params?.[objectName]?.toString();
+      return actualFilter ? !!+actualFilter : false;
     }
     return params?.[objectName]?.toString()?.includes(filterIndex);
   };
@@ -138,8 +140,6 @@ const Filters: React.FC<Props> = ({ scrollToTop }) => {
   return (
     <Container>
       <TopContainer>
-        <Title>Filters</Title>
-        <Separator />
         <FilterContainer>
           <FilterTitle>Image types</FilterTitle>
           <FilterName
@@ -156,6 +156,16 @@ const Filters: React.FC<Props> = ({ scrollToTop }) => {
             active={checkFilterIndexIsActive('categories', 3)}
             onClick={() => toggleFilter({ filterType: 'categories', type: 3 })}>
             People
+          </FilterName>
+        </FilterContainer>
+        <FilterContainer>
+          <FilterTitle>AI Art</FilterTitle>
+          <FilterName
+            active={checkFilterIndexIsActive('ai_art_filter', true)}
+            onClick={() =>
+              toggleFilter({ filterType: 'ai_art_filter', type: 1 })
+            }>
+            Enabled
           </FilterName>
         </FilterContainer>
         <FilterContainer>

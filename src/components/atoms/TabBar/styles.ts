@@ -6,6 +6,10 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
+export const Title = styled.span`
+  letter-spacing: 0.1em;
+`;
+
 export const Bar = styled.div`
   display: flex;
   justify-content: space-between;

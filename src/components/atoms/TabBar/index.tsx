@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineClose, AiOutlineLine } from 'react-icons/ai';
 
-import { Container, Bar } from './styles';
+import { Container, Bar, Title } from './styles';
 
 const TabBar: React.FC = () => {
   const isDarwin = window.Main.platform === 'darwin';
@@ -18,7 +18,7 @@ const TabBar: React.FC = () => {
       <Bar className="drag">
         <div />
         <div>
-          <span>WALLHAVEN</span>
+          <Title>WALLHAVEN</Title>
         </div>
         {!isDarwin ? (
           <div className="flex no-drag">

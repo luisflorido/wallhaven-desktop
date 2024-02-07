@@ -16,6 +16,7 @@ export const ThumbContainer = styled.div`
 `;
 
 export const ItemContainer = styled.div`
+  display: flex;
   transform: scale(0.95);
   min-height: 250px;
 `;

@@ -12,6 +12,7 @@ export interface ISearchAPIParams {
   q?: string;
   categories?: string;
   purity?: string;
+  ai_art_filter?: number;
   sorting?:
     | 'date_added'
     | 'relevance'

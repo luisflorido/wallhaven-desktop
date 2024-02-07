@@ -1,5 +1,7 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import 'react-loading-skeleton/dist/skeleton.css';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const domNode = document.getElementById('root');
+const root = createRoot(domNode);
+root.render(<App />);

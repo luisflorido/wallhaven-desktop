@@ -39,7 +39,7 @@ const Home: React.FC = () => {
   }, [searchError]);
 
   const scrollToTop = () => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+    scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -90,8 +90,8 @@ const Home: React.FC = () => {
       <Flex flex={2}>
         <Filters scrollToTop={scrollToTop} />
       </Flex>
-      <Flex flex={8} className="thumbs-container">
-        <Thumbs ref={scrollRef} onThumbClick={handleThumbClick} />
+      <Flex flex={8} className="thumbs-container" ref={scrollRef}>
+        <Thumbs onThumbClick={handleThumbClick} />
         {(hasNextPage || loadingSearch) && (
           <Flex flex={1} className="skeleton">
             <Skeleton height={50} width={50} borderRadius={50} />

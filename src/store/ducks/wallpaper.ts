@@ -37,6 +37,7 @@ const initialState: WallpaperState = {
       sorting: 'date_added',
       ratios: ['landscape', 'portrait'],
       order: 'desc',
+      ai_art_filter: 0,
     },
   },
   lastSearch: null,
