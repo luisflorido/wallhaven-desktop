@@ -1,7 +1,7 @@
 {
   "name": "wallhaven",
   "author": "Luis Guilherme Silva Florido <luiisflorido@gmail.com>",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Wallhaven desktop application.",
   "repository": {
     "url": "https://github.com/luisflorido/wallhaven-desktop"
@@ -46,13 +46,13 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.65",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
-    "@electron-forge/plugin-webpack": "^6.0.0-beta.63",
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-dmg": "^7.2.0",
+    "@electron-forge/maker-rpm": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "@electron-forge/plugin-webpack": "^7.2.0",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@types/electron-devtools-installer": "2.2.0",
     "@types/react": "^17.0.42",
@@ -66,7 +66,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "electron": "^17.2.0",
-    "electron-dl": "^3.3.1",
+    "electron-dl": "^3.5.2",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -92,7 +92,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "name": "Wallhaven",
+        "name": "wallhaven",
         "executableName": "wallhaven",
         "icon": "assets/icon",
         "extraResource": [
