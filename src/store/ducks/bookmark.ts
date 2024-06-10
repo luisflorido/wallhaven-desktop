@@ -39,7 +39,6 @@ const bookmarkSlice = createSlice({
     checkDownloadedBookmarksSuccess(state, action: PayloadAction<string[]>) {
       const filesInFolder = action.payload;
       const bookmarkList = state.bookmarks;
-      console.tron.log({ filesInFolder, action });
       const checkAll = filesInFolder.length > 1;
       if (checkAll) {
         const newBookmarks = bookmarkList.map(bookmark => {

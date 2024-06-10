@@ -125,6 +125,17 @@ async function registerListeners() {
               await download(mainWindow, thumb.path, {
                 directory: folderPath,
                 filename: fileName,
+                onProgress: e => {
+                  const percent = Math.round(e.percent * 100);
+                  event.sender.send('bookmark-download-progress', {
+                    id: thumb.id,
+                    progress: percent,
+                  });
+                },
+                onCompleted: () =>
+                  event.sender.send('bookmark-downloaded', {
+                    id: thumb.id,
+                  }),
               });
               event.sender.send('check-downloaded-bookmarks', [thumb.id]);
             } catch {

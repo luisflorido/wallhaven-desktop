@@ -41,8 +41,9 @@ const Thumbs: React.FC<Props> = ({ onThumbClick }) => {
 
   return (
     <>
-      {paginate(search, 9).map(chunk => (
-        <ThumbContainer>
+      {paginate(search, 9).map((chunk, chunkIndex) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <ThumbContainer key={`thumb-container-${chunkIndex}`}>
           {!chunk?.length
             ? arrayKeys(9).map(index => (
                 <ItemContainer key={index}>
